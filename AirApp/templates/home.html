@@ -2,6 +2,32 @@
 
 {% block content %}
 
-<h1> HELLO FAM</h1>
+
+</br></br>
+
+{% if zipcode %}
+    {{ zipcode }}
+{% endif %}
+
+{% if result %}
+{% if result == "Error..." %}
+There was an error, try again fam.
+{% else %}
+<div class="jumbotron {{ category_color}} ">
+    <h1 class="display-4">{{result.0.Category.Name}}</h1>
+    <p class="lead">Current {{result.0.ReportingArea}} air quality: {{result.0.AQI}}</p>
+    <hr class="my-4">
+
+    <p>{{ category_description }}</p>
+
+    <!--
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </p>
+    -->
+</div>
+{% endif %}
+{% endif %}
+
 
 {% endblock %}
